@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.1.1.min.js"></script>
+</head>
+<body>
+
+</body>
+<script>
+    $.ajax({
+        type: 'post',
+        url: 'http://127.0.0.1:5000/json',
+        data: JSON.stringify({
+            b :{mamad: 23},
+            a :{ali: 123}
+        }),
+        dataType : 'json',
+//        contentType: "application/json; charset=utf-8",
+        traditional: true,
+        success: function (data) {alert(123)
+            $("body").html(data)
+        }
+    });
+</script>
+</html>

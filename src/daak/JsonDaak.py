@@ -1,5 +1,5 @@
 from __future__ import print_function
-from flask import json, jsonify
+from flask import json
 
 try:
     from types import SimpleNamespace as Namespace

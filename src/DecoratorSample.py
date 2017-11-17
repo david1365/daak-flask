@@ -19,3 +19,15 @@ def just_some_function():
     print("Wheee!")
 
 just_some_function()
+
+
+#
+# def dec(func):
+#     @functools.wraps(func)
+#     def wrapper(*args, **kwargs):
+#         return func(*args, **kwargs)
+#     return wrapper
+# return dec
+#
+# @dec
+# dic = {"a" : 1}

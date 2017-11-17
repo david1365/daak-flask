@@ -1,16 +1,30 @@
-from flask import Flask, request, jsonify, json, g
-from functools import wraps
-import inspect
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+from src.admin import simple_page
+from src.daak import flask, JsonDaak
+from src.daak.serviceImpDaak import jsonPostDaak
 
-from flask.wrappers import _get_data
+from flask import render_template
 
-from src.DaakPortal.JsonDaak import JsonDaak
 
-try:
-    from types import SimpleNamespace as Namespace
-except ImportError:
-    # Python 2.x fallback
-    from argparse import Namespace
+def route(rule, **options):
+    """A decorator that is used to define custom routes for methods in
+    FlaskView subclasses. The format is exactly the same as Flask's
+    `@app.route` decorator.
+    """
+
+    def decorator(f):
+        # Put the rule cache on the method itself instead of globally
+        if not hasattr(f, '_rule_cache') or f._rule_cache is None:
+            f._rule_cache = {f.__name__: [(rule, options)]}
+        elif not f.__name__ in f._rule_cache:
+            f._rule_cache[f.__name__] = [(rule, options)]
+        else:
+            f._rule_cache[f.__name__].append((rule, options))
+
+        return f
+
+    return decorator
 
 
 
@@ -26,14 +40,11 @@ except ImportError:
 #         return '+'.join(BaseConverter.to_url(value)
 #                         for value in values)
 
-flask = Flask(__name__)
+
 
 
 # print __name__
 
-
-from os.path import basename, dirname, join
-from glob import glob
 
 # pwd = dirname(__file__)
 # print glob(join(pwd, '*.py'))
@@ -60,59 +71,38 @@ from glob import glob
 #         return jsonify(result) if not raw else result
 #     return wrapper
 
-def jsonPost(url=None, cache=True):
-    def actualJsonPost(func):
-        @wraps(func)
-        def wrapperJsonPost(*args, **kwargs):
-            funcArgs = inspect.getargspec(func).args
-            jsonData = _get_data(request, cache)
-            objects = JsonDaak.fromJson(jsonData)
-
-            for key in funcArgs:
-                if key in objects:
-                    kwargs[key] = getattr(objects, key)
-
-            # raw = False
-            # if "raw" in kwargs:
-            #     raw = kwargs["raw"]
-            #     del kwargs["raw"]
-
-            result = func(*args, **kwargs)
-            return JsonDaak.toJSON(result) #if not raw else result
-
-        return wrapperJsonPost
-    return actualJsonPost
 
 
 
-def decor(func):
-     def wrapper(*args, **kwargs):
-        # if args: # If args is not empty.
-        #     args =  [n + "david" for n in args]
-        # if kwargs: # If kwargs is not empty.
-        #     for key in kwargs:
-        #         kwargs[key] += "david"
 
-        jsonData = _get_data(request, True)#request.get_json(force=True) or request.data
-        objects = JsonDaak.fromJson(jsonData)
+# def decor(func):
+#      def wrapper(*args, **kwargs):
+#         # if args: # If args is not empty.
+#         #     args =  [n + "david" for n in args]
+#         # if kwargs: # If kwargs is not empty.
+#         #     for key in kwargs:
+#         #         kwargs[key] += "david"
+#
+#         jsonData = _get_data(request, True)#request.get_json(force=True) or request.data
+#         objects = JsonDaak.fromJson(jsonData)
+#
+#      # data = data.to_dict()
+#         # print jsonify(data)
+#         print objects
+#
+#         print('args - ',args)
+#         print('kwargs - ',kwargs)
+#
+#         print inspect.getargspec(func).args
+#
+#         print request.get_json(force=True)
+#
+#         return func(*args, **kwargs)
+#
+#      return wrapper
 
-     # data = data.to_dict()
-        # print jsonify(data)
-        print objects
-
-        print('args - ',args)
-        print('kwargs - ',kwargs)
-
-        print inspect.getargspec(func).args
-
-        print request.get_json(force=True)
-
-        return func(*args, **kwargs)
-
-     return wrapper
-
-@flask.route('/json', methods=['POST'])
-@jsonPost
+@simple_page.route('/json', methods=['POST'])
+@jsonPostDaak("kk")
 def add_message(a, b):
     # content = request.json
     # print content['mytext']
@@ -122,7 +112,7 @@ def add_message(a, b):
     ali.name = "ali"
 
     me = JsonDaak()
-    me.name = "Onur"
+    me.name = "داود"
     me.age = 35
     me.dog = JsonDaak()
     me.dog.name = "Apollo"
@@ -131,6 +121,14 @@ def add_message(a, b):
     return me#jsonify({"uuid":"david"})
 
 
+
+
+
+# url_for('static', filename='jquery-3.1.1.min.js')
+
+@simple_page.route('/')
+def root():
+    return render_template('json.html')
 
 # @flask.before_request
 # def before_request():
@@ -154,8 +152,7 @@ def add_message(a, b):
 # def david():
 #     return 123
 
-if __name__ == "__main__":
-    flask.run()
+
 
 
 

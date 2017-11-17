@@ -3,24 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="jquery-3.1.1.min.js"></script>
+    <script src="/admin/web/jquery-3.1.1.min.js"></script>
 </head>
 <body>
 
 </body>
 <script>
+    debugger;
+    $(document.body).html(123);
     $.ajax({
         type: 'post',
-        url: 'http://127.0.0.1:5000/json',
+        url: 'http://127.0.0.1:8080/admin/json',
         data: JSON.stringify({
             b :{mamad: 23},
             a :{ali: 123}
         }),
         dataType : 'json',
-//        contentType: "application/json; charset=utf-8",
+        contentType: "application/json-daak; charset=utf-8",
         traditional: true,
-        success: function (data) {alert(123)
-            $("body").html(data)
+        success: function (data) {alert(data)
+            $(document.body).html(data.name);
         }
     });
 </script>

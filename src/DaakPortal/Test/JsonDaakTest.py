@@ -1,5 +1,6 @@
 import unittest
-from src.DaakPortal.JsonDaak import JsonDaak
+
+from src.daak.JsonDaak import JsonDaak
 
 
 class TestJsonDaak(unittest.TestCase):

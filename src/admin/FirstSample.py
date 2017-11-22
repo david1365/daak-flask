@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import src.admin
 from src.admin import simple_page
 from src.daak import JsonDaak
 from src.daak.serviceImpDaak import jsonPostDaak

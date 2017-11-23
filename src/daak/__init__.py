@@ -11,13 +11,18 @@
 """
 __version__ = '0.0.1'
 
-from twisted.python import log
-import sys
-log.startLogging(sys.stdout)
-
+import logging
+#
+# logging.basicConfig(
+#     format="%(asctime)s [%(threadName)-12.12s] [%(levelname)-5.5s]  %(message)s",
+#     handlers=[
+#         logging.FileHandler("{0}/{1}.log".format("/tmp", "test")),
+#         logging.StreamHandler()
+#     ])
+log = logging.getLogger("daak")
 
 urlMap = {}
-
+#
 # from flask import Flask
 # flask = Flask(__name__)
 #

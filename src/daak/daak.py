@@ -5,7 +5,7 @@ from src.daak import log
 from src.daak import restTest
 from src.daak import urlMap
 
-class Daak(Resource):
+class ResourceDaak(Resource):
 
     isLeaf = True
     def render_GET(self, request):
@@ -17,12 +17,18 @@ class Daak(Resource):
 
 
 
+class Daak(Site):
+    def doStart(self):
+         Site.doStart(self)
+         log.info("dfasdf")
+
+
 def run(port):
-    resourceDaak = Daak()
+    resourceDaak = ResourceDaak()
     wrappedDaak = EncodingResourceWrapper(resourceDaak, [GzipEncoderFactory()])
-    site = Site(wrappedDaak)
+    site = Daak(wrappedDaak)
     reactor.listenTCP(port, site)
-    log.msg("daak server run listen to port '" + str(port) + "'." )
+    # log.msg("daak server run listen to port '" + str(port) + "'." )
     reactor.run()
 
 

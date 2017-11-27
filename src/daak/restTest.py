@@ -1,5 +1,5 @@
-from src.daak.decorators import route
+from src.daak.decorators import jsonPost
 
-@route("/")
+@jsonPost()
 def test():
     return 'hello iran'

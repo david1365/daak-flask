@@ -1,25 +1,4 @@
-# -*- coding: utf-8 -*-
-"""
-    daak
-    ~~~~~
 
-    A microframework based on twisted.  It's extensively documented
-    and follows best practice patterns.
-
-    :copyright: (c) 2017 by Davood Akbari.
-    :license: GPL, see LICENSE for more details.
-"""
-__version__ = '0.0.1'
-
-import logging
-#
-# logging.basicConfig(
-#     format="%(asctime)s [%(threadName)-12.12s] [%(levelname)-5.5s]  %(message)s",
-#     handlers=[
-#         logging.FileHandler("{0}/{1}.log".format("/tmp", "test")),
-#         logging.StreamHandler()
-#     ])
-log = logging.getLogger("daak")
 
 urlMap = {}
 #

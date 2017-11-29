@@ -1,11 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import src.admin
+from flask import render_template
+
 from src.admin import simple_page
-from src.daak import JsonDaak
 from src.daak.serviceImpDaak import jsonPostDaak
 
-from flask import render_template
 
 @simple_page.route('/json', methods=['POST'])
 @jsonPostDaak()

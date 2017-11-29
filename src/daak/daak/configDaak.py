@@ -1,5 +1,5 @@
 import xml.etree.ElementTree as ET
 try:
-    tree = ET.parse('daak.config.xml')
+    tree = ET.parse('config.py')
 except ValueError:
     print ""

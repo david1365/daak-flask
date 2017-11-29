@@ -1,6 +1,8 @@
-from src.daak import flask
-from src.admin import simple_page
 from flask import request
+
+from src.admin import simple_page
+from src.daak import flask
+
 
 class ReverseProxied(object):
     '''Wrap the application in this middleware and configure the

@@ -20,7 +20,7 @@ class ResponseJSON(Response):
 
 
 def to_json(content):
-    """Converts content to json while respecting config options."""
+    """Converts content to json while respecting config.py options."""
     indent = None
     separators = (',', ':')
 

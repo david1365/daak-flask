@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from src.admin import simple_page
-from src.daak import flask, JsonDaak
-from src.daak.serviceImpDaak import jsonPostDaak
-
 from flask import render_template
+
+from src.admin import simple_page
+from src.daak import JsonDaak
+from src.daak.serviceImpDaak import jsonPostDaak
 
 
 def route(rule, **options):

@@ -1,5 +1,15 @@
-import xml.etree.ElementTree as ET
-try:
-    tree = ET.parse('config.py')
-except ValueError:
-    print ""
+from src.daak.daak.context import ContextManager
+
+def getContextManager():
+    config = {}
+    execfile(ContextManager.configPath(), config)
+
+    rootPath = config.get('rootPath')
+    logPath = config.get('logPath')
+    if rootPath == None:
+        raise ValueError("please set 'rootPath' variables in config file!")
+
+    if logPath == None:
+        return ContextManager(rootPath)
+
+    return  ContextManager(rootPath, logPath)

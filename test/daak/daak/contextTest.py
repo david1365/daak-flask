@@ -1,3 +1,10 @@
+
+__author__ = "davood akbari <daak1365@yahoo.com>"
+__status__ = "production"
+__version__ = "0.0.0.1"
+__date__ = "November 2017"
+
+
 import unittest
 from src.daak.daak.context import Context, ContextManager
 
@@ -9,7 +16,7 @@ class TestJsonDaak(unittest.TestCase):
         ctx = contextManager.get("context1")
         self.assertEqual(ctx.service, "service")
         self.assertEqual(ctx.web, "web")
-        self.assertEqual(ContextManager.configPath(), "../../config/config.py")
+        self.assertEqual(ContextManager.configPath(), "../../config/config1.py")
 
     def test_Context(self):
         context = Context("context1")

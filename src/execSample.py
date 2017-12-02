@@ -1,8 +1,8 @@
 gl = {}
-execfile("../../config/config.py", gl)
+execfile("../../config/config1.py", gl)
 
 import runpy
-file_globals = runpy.run_path("../../config/config.py")
+file_globals = runpy.run_path("../../config/config1.py")
 
 # print file_globals
 

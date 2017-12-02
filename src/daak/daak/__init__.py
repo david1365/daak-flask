@@ -1,21 +1,16 @@
 # -*- coding: utf-8 -*-
-"""
-    daak
-    ~~~~~
 
-    A microframework based on twisted.  It's extensively documented
-    and follows best practice patterns.
-
-    :copyright: (c) 2017 by Davood Akbari.
-    :license: GPL, see LICENSE for more details.
-"""
 __author__ = "davood akbari <daak1365@yahoo.com>"
 __status__ = "production"
 __version__ = "0.0.0.1"
 __date__ = "27 November 2017"
 
+from src.daak.daak.configManager import getContextManager
+
+contextManager = getContextManager()
+
 # config = {}
-# execfile("../../config/config.py", config)
+# execfile("../../config/config1.py", config)
 #
 # try:
 #     rootDirectory = config['rootDirectory']
@@ -33,7 +28,7 @@ __date__ = "27 November 2017"
 # print dir_list, walk(rootDirectory)
 
 # my_list = [x for x in my_list if x.attribute == value]
-# importFiles = [file for root, dirs, files in walk(rootDirectory) if file != "config.py"]
+# importFiles = [file for root, dirs, files in walk(rootDirectory) if file != "config1.py"]
 #     # print root
 #     # print dirs
 # print importFiles

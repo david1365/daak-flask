@@ -1,1 +1,1 @@
-# rootPath="/home/david/LinuxOther/project/david-project/python/daak-flask/daak-root"
+rootPath="/home/david/LinuxOther/project/david-project/python/daak-flask/daak-root"

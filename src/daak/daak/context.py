@@ -4,6 +4,8 @@ __status__ = "production"
 __version__ = "0.0.0.1"
 __date__ = "November 2017"
 
+import inspect
+
 class Context(object):
 
     def __init__(self, name, service='service', web='web', logPath='../log/daak.log'):
@@ -59,6 +61,16 @@ class ContextManager(object):
     @staticmethod
     def configPath():
         return "../../config/config.py"
+
+    @classmethod
+    def getContextName(self, object):
+        filePath = inspect.getfile(object)
+        contextName = filePath[len(self.rootPath) + 1:]
+        return contextName[: contextName.find('/')]
+
+    @classmethod
+    def getContext(self, object):
+        pass
 
 
 

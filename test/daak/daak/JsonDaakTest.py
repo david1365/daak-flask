@@ -1,6 +1,13 @@
+
+__author__ = "davood akbari <daak1365@yahoo.com>"
+__status__ = "production"
+__version__ = "0.0.0.1"
+__date__ = "November 2017"
+
+
 import unittest
 
-from src.daak.JsonDaak import JsonDaak
+from src.daak.daak.JsonDaak import JsonDaak
 
 
 class TestJsonDaak(unittest.TestCase):

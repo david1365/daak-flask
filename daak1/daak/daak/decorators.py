@@ -4,8 +4,8 @@ __status__ = "production"
 __version__ = "0.0.0.1"
 __date__ = "November 2017"
 
-from src.daak.daak import contextManager
 
+from daak1.daak.daak import contextManager
 
 from functools import wraps
 import inspect

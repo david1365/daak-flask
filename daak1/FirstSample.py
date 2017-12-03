@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 from flask import render_template
 
-from src.admin import simple_page
-from src.daak.serviceImpDaak import jsonPostDaak
+from daak1.admin import simple_page
+from daak1.daak.serviceImpDaak import jsonPostDaak
 
 
 @simple_page.route('/json', methods=['POST'])

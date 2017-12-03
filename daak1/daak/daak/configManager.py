@@ -1,4 +1,4 @@
-from src.daak.daak.context import ContextManager
+from daak1.daak.daak.context import ContextManager
 from os import path
 
 
@@ -16,7 +16,7 @@ def getContextManager():
         if logPath == None:
             return ContextManager(rootPath)
 
-        return  ContextManager(rootPath, logPath)
+        return ContextManager(rootPath, logPath)
 
     else:
         raise IOError("file in path '" + configPath + "' not found. pleas create it!")

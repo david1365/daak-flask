@@ -7,8 +7,8 @@ __date__ = "November 2017"
 
 import unittest
 
-from src.daak.daak.configManager import getContextManager
-from src.daak.daak.context import ContextManager
+from daak1.daak.daak.configManager import getContextManager
+from daak1.daak.daak.context import ContextManager
 
 
 class TestJsonDaak(unittest.TestCase):

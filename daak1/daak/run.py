@@ -1,7 +1,7 @@
 from flask import request
 
-from src.admin import simple_page
-from src.daak import flask
+from daak1.admin import simple_page
+from daak1.daak import flask
 
 
 class ReverseProxied(object):

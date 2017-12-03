@@ -5,6 +5,8 @@ __version__ = "0.0.0.1"
 __date__ = "November 2017"
 
 import inspect
+import os.path
+import daak1
 
 class Context(object):
 
@@ -60,12 +62,18 @@ class ContextManager(object):
 
     @staticmethod
     def configPath():
-        return "../../config/config.py"
+        appPath = ContextManager.applicationPath()
+        return appPath + "config/config.py"
+
+    @staticmethod
+    def applicationPath():
+        appPath = os.path.abspath(daak1.__file__)
+        return daak1.__file__[:appPath.find('__init__.py')]
 
     @classmethod
     def getContextName(self, object):
         filePath = inspect.getfile(object)
-        contextName = filePath[len(self.rootPath) + 1:]
+        contextName = filePath[len(self._rootPath) + 1:]
         return contextName[: contextName.find('/')]
 
     @classmethod

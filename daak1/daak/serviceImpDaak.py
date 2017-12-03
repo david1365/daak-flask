@@ -4,7 +4,7 @@ from functools import wraps
 from flask import request, render_template
 from flask.wrappers import _get_data
 
-from src.daak.JsonDaak import JsonDaak
+from daak1.daak.JsonDaak import JsonDaak
 
 
 def jsonPostDaak(**options):

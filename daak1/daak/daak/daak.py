@@ -3,8 +3,8 @@ from twisted.web.resource import Resource, EncodingResourceWrapper
 from twisted.internet import reactor
 from twisted.web.static import File
 
-from src.daak.daak.loggerDaak import loggerDaak
-from src.daak import urlMap
+from daak1.daak.daak.logger import loggerDaak
+from daak1.daak import urlMap
 
 class ResourceDaak(Resource):
 

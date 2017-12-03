@@ -7,7 +7,7 @@ __date__ = "November 2017"
 
 import unittest
 
-from src.daak.daak.JsonDaak import JsonDaak
+from daak1.daak.daak.Json import JsonDaak
 
 
 class TestJsonDaak(unittest.TestCase):

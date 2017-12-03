@@ -1,4 +1,4 @@
-from src.daak.daak.restDaak import jsonPost
+from daak1.daak.daak.decorators import jsonPost
 
 @jsonPost()
 def test():

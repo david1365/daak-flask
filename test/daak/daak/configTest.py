@@ -7,11 +7,11 @@ __date__ = "November 2017"
 
 import unittest
 
-from daak1.daak.daak.configManager import getContextManager
+from daak1.daak.daak.configManager import getContextManager, getConfigVariable
 from daak1.daak.daak.context import ContextManager
 
 
-class TestJsonDaak(unittest.TestCase):
+class TestConfig(unittest.TestCase):
     def test_configFileNotFound(self):
         try:
             contextManager =  getContextManager()
@@ -26,10 +26,27 @@ class TestJsonDaak(unittest.TestCase):
         try:
             contextManager =  getContextManager()
 
+            self.fail(msg="dont raise exception rootPath not found")
+        except Exception as e:
+            self.assertEqual(e.message, "please set 'rootPath' variables in config file!")
+
+
+    def test_ConfigVariable(self):
+        try:
+            context, service, web = next(getConfigVariable("../../config/projectConfig1.py"))
+
+            self.fail(msg="dont raise exception variable none")
+        except Exception as e:
+            self.assertEqual(e.message, "please set variables in config file for any project!")
+
+        try:
+            context, service, web = next(getConfigVariable("a.py"))
+
             self.fail(msg="dont raise exception file not found")
         except Exception as e:
-            configPath = ContextManager.configPath()
-            self.assertEqual(e.message, "please set 'rootPath' variables in config file!")
+            self.assertEqual(e.message, "file in path 'a.py' not found. pleas create it!")
+
+
 
 if __name__ == '__main__':
     unittest.main()

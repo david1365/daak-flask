@@ -18,14 +18,26 @@ contextManager = getContextManager()
 #     # TODO: complet this line and show miss variable
 #     raise ValueError("please set need variables in config file!")
 #
-# from glob import glob
-# from os.path import basename, dirname, join
-# from os import walk
+from glob import glob
+from os.path import basename, dirname, join
+from os import walk
 
-# print glob(join(rootDirectory, "/*/"))
+print glob(join(contextManager.rootPath, "/*/"))
 #
-# dir_list = next(walk(rootDirectory))
-# print dir_list, walk(rootDirectory)
+root, dirs, files = next(walk(contextManager.rootPath))
+print root,dirs#, walk(contextManager.rootPath)
+
+for name in dirs:
+    print name
+
+
+
+def f():
+    yield 1, 2, 3
+
+a, b, c = next(f())
+
+print c
 
 # my_list = [x for x in my_list if x.attribute == value]
 # importFiles = [file for root, dirs, files in walk(rootDirectory) if file != "config1.py"]

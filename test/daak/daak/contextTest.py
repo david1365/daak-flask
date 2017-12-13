@@ -9,7 +9,8 @@ import unittest
 from daak1.daak.daak.context import Context, ContextManager
 
 
-class TestJsonDaak(unittest.TestCase):
+class TestContext(unittest.TestCase):
+
     def test_ContextManager(self):
         contextManager = ContextManager(rootPath='/')
         contextManager.add(context=Context("context1"))

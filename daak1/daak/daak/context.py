@@ -7,6 +7,8 @@ __date__ = "November 2017"
 import inspect
 import os.path
 import daak1
+from os import walk
+from daak1.daak.daak.configManager import getConfigVariable
 
 class Context(object):
 
@@ -44,11 +46,11 @@ class ContextManager(object):
         self._rootPath = rootPath
         self._logPath = logPath
 
-    @classmethod
-    def add(self, context):
-        self._contexts[context.name] = context
+        self._init()
 
-    @classmethod
+    def add(self, contextName, context):
+        self._contexts[contextName] = context
+
     def get(self, contextName, default=None):
         return self._contexts.get(contextName, default)
 
@@ -70,15 +72,22 @@ class ContextManager(object):
         appPath = os.path.abspath(daak1.__file__)
         return daak1.__file__[:appPath.find('__init__.py')]
 
-    @classmethod
     def getContextName(self, object):
         filePath = inspect.getfile(object)
         contextName = filePath[len(self._rootPath) + 1:]
         return contextName[: contextName.find('/')]
 
-    @classmethod
     def getContext(self, object):
-        pass
+        return self.get(self.getContextName(object))
+
+    def _init(self):
+        root, dirs, files = next(walk(self._rootPath))
+        for dirName in dirs:
+            context, service, web = getConfigVariable(dirName + "config.py")
+            self.add(dirName, Context(context, service, web))
+
+
+
 
 
 

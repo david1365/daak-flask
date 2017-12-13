@@ -14,9 +14,9 @@ urlMap = {}
 
 def jsonPost(**options):
     def decorator(f):
-        # print inspect.getmembers(f)#[1][1].__name__
+        print inspect.getmembers(f)#[1][1].__name__
         # print dir(f)
-        # print f.__class__.__name__
+        print f.__self__
 
         # print inspect.stack()[0][1]
         # rootPath="/home/david/LinuxOther/project/david-project/python/daak-flask/daak-root"

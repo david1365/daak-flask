@@ -1,8 +1,15 @@
 from daak1.daak.daak.decorators import jsonPost
 
+# @jsonPost()
+# def test():
+#     return 'hello iran'
+
+
 @jsonPost()
-def test():
-    return 'hello iran'
+class a:
+    @jsonPost()
+    def b(self):
+        return 'hello class'
 
 
 # import os
